@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.frhtml.domain.TranslationEntity
 import com.example.frhtml.databinding.ActivityMainBinding
+import com.example.frhtml.di.DaggerAppComponent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
