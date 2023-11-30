@@ -48,16 +48,16 @@ dependencies {
 
 
     // Room
-    implementation "androidx.room:room-runtime:2.6.0"
-    kapt "androidx.room:room-compiler:2.6.0"
+   // implementation "androidx.room:room-runtime:2.6.0"
+   // kapt "androidx.room:room-compiler:2.6.0"
 
     // Kotlin Extensions и Coroutines для Room (для Kotlin)
-    implementation "androidx.room:room-ktx:2.6.0"
+ //   implementation "androidx.room:room-ktx:2.6.0"
 
 // Kotlin Coroutines
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1"
+ //   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1"
 
-// Для работы с Excel файлами (если потребуется)
+// Для работы с Excel файлами
     implementation 'org.apache.poi:poi:5.2.2'
     implementation 'org.apache.poi:poi-ooxml:5.2.2'
 
