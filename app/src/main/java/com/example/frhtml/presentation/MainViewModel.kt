@@ -2,10 +2,15 @@ package com.example.frhtml.presentation
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.example.frhtml.domain.*
+import com.example.frhtml.domain.ExtractRussianTextUseCase
+import com.example.frhtml.domain.GetListOfBrandsUseCase
+import com.example.frhtml.domain.LoadHtmlFromAssetsUseCase
+import com.example.frhtml.domain.OutputExelUseCase
+import com.example.frhtml.domain.OutputHtmlUseCase
+import com.example.frhtml.domain.ReadCsvUseCase
 
 
-class MainViewModel(
+class MainViewModel (
     private val loadHtmlFromAssetsUseCase: LoadHtmlFromAssetsUseCase,
     private val extractRussianTextUseCase: ExtractRussianTextUseCase,
     private val outputExelUseCase: OutputExelUseCase,
