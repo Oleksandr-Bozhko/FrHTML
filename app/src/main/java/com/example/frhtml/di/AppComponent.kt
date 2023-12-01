@@ -6,7 +6,7 @@ import dagger.Component
 
 
 
-@Component()
+@Component(modules = [DataModule::class])
 interface AppComponent {
     @Component.Factory
    interface Factory{

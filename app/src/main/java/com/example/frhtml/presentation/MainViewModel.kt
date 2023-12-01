@@ -8,9 +8,10 @@ import com.example.frhtml.domain.LoadHtmlFromAssetsUseCase
 import com.example.frhtml.domain.OutputExelUseCase
 import com.example.frhtml.domain.OutputHtmlUseCase
 import com.example.frhtml.domain.ReadCsvUseCase
+import javax.inject.Inject
 
 
-class MainViewModel (
+class MainViewModel  @Inject constructor(
     private val loadHtmlFromAssetsUseCase: LoadHtmlFromAssetsUseCase,
     private val extractRussianTextUseCase: ExtractRussianTextUseCase,
     private val outputExelUseCase: OutputExelUseCase,
