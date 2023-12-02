@@ -1,28 +1,48 @@
 package com.example.frhtml.presentation
 
+//import com.example.frhtml.di.DaggerAppComponent
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.frhtml.domain.TranslationEntity
+import androidx.lifecycle.ViewModelProvider
 import com.example.frhtml.databinding.ActivityMainBinding
-import com.example.frhtml.di.DaggerAppComponent
+import com.example.frhtml.domain.TranslationEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.BufferedReader
 import java.io.IOException
+import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+    private lateinit var viewModel: MainViewModel
+       private val component by lazy {
+           (application as App).component
+      }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+             component.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val brands = listOf("barbour", "gramicci", "isseymiyake", "lemaire", "norrona", "oakley", "onitsuka-tiger", "the-row")
+        viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
+        val brands = listOf(
+            "barbour",
+            "gramicci",
+            "isseymiyake",
+            "lemaire",
+            "norrona",
+            "oakley",
+            "onitsuka-tiger",
+            "the-row"
+        )
         val test2 = Test2()
 
         binding.buttonOutputExel.setOnClickListener {
@@ -39,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.buttonLoadCsv.setOnClickListener {
-            readCsvFile(this,brands[6])
+            readCsvFile(this, brands[6])
         }
     }
 
@@ -118,7 +138,7 @@ fun processHtmlFile(
         // Загрузка HTML из файловой системы
         val htmlContent = loadHtmlFromAssets(context, htmlFileName)
         // Чтение переводов из CSV-файла
-        val translations = readCsvFile(context,htmlFileName)
+        val translations = readCsvFile(context, htmlFileName)
         // Модификация HTML с использованием переводов
         val modifiedHtml = replaceTextInHtml(htmlContent, translations)
         // Сохранение модифицированного HTML обратно в файл
