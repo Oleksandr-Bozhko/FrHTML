@@ -8,10 +8,10 @@ import dagger.Component
 import javax.inject.Inject
 
 
-@Component(modules = [DataModule::class, ViewModelFactory::class])
+@Component(modules = [DataModule::class,B::class,ViewModelModule::class])
 interface AppComponent {
 
-    @Inject
+
     fun inject(activity: MainActivity)
     @Component.Factory
    interface Factory{
